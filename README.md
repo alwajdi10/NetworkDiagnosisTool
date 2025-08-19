@@ -1,4 +1,4 @@
-NetDiagnostics - Network Troubleshooting Tool
+# NetDiagnostics - Network Troubleshooting Tool
 NetDiagnostix  is a powerful and intuitive network diagnostic and troubleshooting tool developed as a Summer internship project. It is designed to help network administrators and IT professionals quickly identify, analyze, and resolve network issues through a suite of integrated utilities.
 
 ✨ Features
