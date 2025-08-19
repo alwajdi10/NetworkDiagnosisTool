@@ -64,7 +64,7 @@ After installation and activating your virtual environment, you can run the appl
 
 bash
 python main.py
-Basic Workflow:
+# Basic Workflow:
 
 Launch the application. The main dashboard will show an overview of your network interface.
 
@@ -76,17 +76,13 @@ Navigate to the Monitor tab to add critical devices to the real-time watchlist.
 
 View all historical data and generate reports from the Reports section.
 
-📷 Screenshots
+ #  📷 Screenshots
 <img width="1877" height="907" alt="image" src="https://github.com/user-attachments/assets/6a56be71-5a68-41bc-a201-7c71d082abba" />
 <img width="1510" height="476" alt="image" src="https://github.com/user-attachments/assets/48d211d8-5398-4f76-8ec8-d8dea00e872c" />
 <img width="1509" height="379" alt="image" src="https://github.com/user-attachments/assets/d4cddce4-8b02-4794-ae4d-3393aaf078b6" />
 <img width="744" height="914" alt="image" src="https://github.com/user-attachments/assets/3b8711fb-04cf-4e8a-95c2-027411a7d8ee" />
 
-
-📄 License
-This project is licensed under the MIT License - see the LICENSE.md file for details. This means you are free to use, modify, and distribute the code for personal or commercial purposes.
-
-🙏 Acknowledgments
+# 🙏 Acknowledgments
 This project was developed as part of a Summer internship.
 
 Thanks to My tutors for thier guidance throughout this journey.
