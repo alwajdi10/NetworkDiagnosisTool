@@ -1,18 +1,18 @@
 # NetDiagnostics - Network Troubleshooting Tool
 NetDiagnostix  is a powerful and intuitive network diagnostic and troubleshooting tool developed as a Summer internship project. It is designed to help network administrators and IT professionals quickly identify, analyze, and resolve network issues through a suite of integrated utilities.
 
-✨ Features
+# ✨ Features
 NetDiagnostix provides a comprehensive set of tools to give you deep insights into your network's health and performance:
 
-📍 Connectivity Analysis: Quickly verify the availability and responsiveness of devices (servers, printers, IoT devices) on your network using ICMP ping and custom TCP port checks.
+# 📍 Connectivity Analysis: Quickly verify the availability and responsiveness of devices (servers, printers, IoT devices) on your network using ICMP ping and custom TCP port checks.
 
-🚀 Performance Testing: Measure key performance metrics to identify bottlenecks.
+# 🚀 Performance Testing: Measure key performance metrics to identify bottlenecks.
 
-Latency & Jitter: Determine the delay in communication for real-time applications like VoIP and gaming.
+# Latency & Jitter: Determine the delay in communication for real-time applications like VoIP and gaming.
 
-Bandwidth Estimation: Get an estimate of the available bandwidth between points.
+# Bandwidth Estimation: Get an estimate of the available bandwidth between points.
 
-Response Time: Track the time it takes for a device to respond to a request.
+# Response Time: Track the time it takes for a device to respond to a request.
 
 🗺️ Network Mapping: Automatically discover devices on the local network and visualize the network topology, helping you understand how devices are interconnected.
 
@@ -20,7 +20,7 @@ Response Time: Track the time it takes for a device to respond to a request.
 
 📊 Reports and History: Generate detailed, exportable reports (PDF, CSV) on network performance trends and past incidents for analysis and compliance.
 
-🛠️ Tech Stack
+# 🛠️ Tech Stack
 Language: Python 3.x
 
 Key Libraries:
@@ -41,7 +41,7 @@ reportlab / pandas for generating PDF/CSV reports.
 
 Concept: OSI Layers 2 (Data Link) and 3 (Network).
 
-📦 Installation
+# 📦 Installation
 Clone the repository:
 
 bash
