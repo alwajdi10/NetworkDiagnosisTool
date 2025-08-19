@@ -45,7 +45,7 @@ Concept: OSI Layers 2 (Data Link) and 3 (Network).
 Clone the repository:
 
 bash
-git clone https://github.com/your-username/net-diagnostix-tool.git
+git clone https://github.com/alwajdi10/NetworkDiagnosisTool
 cd net-diagnostix-tool
 (Recommended) Create a virtual environment:
 
