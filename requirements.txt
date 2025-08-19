@@ -1,0 +1,63 @@
+# Core Flask and Web Framework
+Flask==2.3.3
+Flask-SocketIO==5.3.6
+python-socketio==5.9.0
+python-engineio==4.7.1
+
+# Database
+sqlite3  # Built-in with Python
+
+# Network and System Monitoring
+psutil==5.9.6
+scapy==2.5.0
+python-nmap==0.7.1
+speedtest-cli==2.1.3
+
+# Security and Cryptography
+pyOpenSSL==23.3.0
+cryptography==41.0.7
+
+# HTTP Requests and APIs
+requests==2.31.0
+urllib3==2.0.7
+
+# AI and OpenRouter Integration
+openai==1.3.5  # For OpenRouter API compatibility
+
+# Data Processing and Analysis
+numpy==1.24.4
+pandas==2.1.3
+
+# Date and Time Handling
+python-dateutil==2.8.2
+
+# Network Utilities
+ipaddress  # Built-in with Python 3.3+
+socket  # Built-in with Python
+uuid  # Built-in with Python
+threading  # Built-in with Python
+subprocess  # Built-in with Python
+re  # Built-in with Python
+time  # Built-in with Python
+json  # Built-in with Python
+os  # Built-in with Python
+platform  # Built-in with Python
+
+# Optional: For enhanced network scanning
+# Note: These might require additional system dependencies
+# python-whois==0.8.0  # For domain/IP whois lookup
+# mac-vendor-lookup==0.1.12  # For MAC address vendor lookup
+
+# Development and Testing (optional)
+# pytest==7.4.3
+# pytest-flask==1.3.0
+
+# Production Server (optional)
+# gunicorn==21.2.0
+# eventlet==0.33.3  # For SocketIO production deployment
+
+# System Requirements Notes:
+# - Linux/macOS: May need 'sudo apt-get install python3-dev libpcap-dev' for scapy
+# - Windows: May need Npcap or WinPcap for scapy
+# - For nmap: Ensure nmap is installed on system (apt-get install nmap / brew install nmap)
+# - For advanced features: May need root/admin privileges for some network operations

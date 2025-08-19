@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - Network Diagnostic Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4361ee, #4cc9f0);
+        }
+
+        .login-form {
+            padding: 40px;
+        }
+
+        .login-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2d3748;
+            font-size: 2em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .login-form h2::before {
+            content: '👤';
+            font-size: 1.2em;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c53030;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #feb2b2;
+            font-size: 0.9em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #4361ee;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .form-group input::placeholder {
+            color: #a0aec0;
+        }
+
+        .password-strength {
+            margin-top: 8px;
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .password-strength.visible {
+            opacity: 1;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .strength-weak { background: #e53e3e; width: 25%; }
+        .strength-fair { background: #dd6b20; width: 50%; }
+        .strength-good { background: #38a169; width: 75%; }
+        .strength-strong { background: #00b894; width: 100%; }
+
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #4361ee, #3f37c9);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-login:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .btn-login::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-login:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-login:hover:not(:disabled)::before {
+            left: 100%;
+        }
+
+        .btn-login:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #718096;
+        }
+
+        .register-link a {
+            color: #4361ee;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .register-link a:hover {
+            color: #3f37c9;
+            text-decoration: underline;
+        }
+
+        .requirements {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .requirements h5 {
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .requirements ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .requirements li {
+            padding: 3px 0;
+            color: #718096;
+            font-size: 0.8em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .requirements li.valid {
+            color: #38a169;
+        }
+
+        .requirements li::before {
+            content: '✗';
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        .requirements li.valid::before {
+            content: '✓';
+            color: #38a169;
+        }
+
+        .network-info {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1), rgba(76, 201, 240, 0.1));
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border: 1px solid rgba(67, 97, 238, 0.2);
+        }
+
+        .network-info h4 {
+            color: #4361ee;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .network-info p {
+            color: #4a5568;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                margin: 10px;
+            }
+            
+            .login-form {
+                padding: 30px 25px;
+            }
+            
+            .login-form h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        .loading {
+            position: relative;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(67, 97, 238, 0.1);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Créer un Compte</h2>
+            {% if error %}
+                <div class="error-message">
+                    <i class="fas fa-exclamation-triangle"></i> {{ error }}
+                </div>
+            {% endif %}
+            <form method="POST" action="/register" id="registerForm">
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-user"></i> Nom d'utilisateur</label>
+                    <input type="text" id="username" name="username" placeholder="Choisissez un nom d'utilisateur" required minlength="3">
+                </div>
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Mot de passe</label>
+                    <input type="password" id="password" name="password" placeholder="Créez un mot de passe sécurisé" required minlength="6">
+                    <div class="password-strength" id="passwordStrength">
+                        <div class="password-strength-bar" id="strengthBar"></div>
+                    </div>
+                    <div class="requirements">
+                        <h5>Exigences du mot de passe:</h5>
+                        <ul>
+                            <li id="length">Au moins 6 caractères</li>
+                            <li id="uppercase">Une lettre majuscule</li>
+                            <li id="lowercase">Une lettre minuscule</li>
+                            <li id="number">Un chiffre</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-id-card"></i> Nom Complet</label>
+                    <input type="text" id="name" name="name" placeholder="Entrez votre nom complet (optionnel)">
+                </div>
+                <button type="submit" class="btn-login" id="registerBtn" disabled>
+                    <i class="fas fa-user-plus"></i> S'inscrire
+                </button>
+            </form>
+            <div class="register-link">
+                Vous avez déjà un compte? <a href="/login">Se connecter</a>
+            </div>
+            
+            <div class="network-info">
+                <h4><i class="fas fa-info-circle"></i> Information</h4>
+                <p>Votre adresse MAC et IP seront automatiquement détectées et enregistrées pour l'analyse réseau. Ces informations sont utilisées uniquement pour le diagnostic et la surveillance de votre réseau.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const strengthIndicator = document.getElementById('passwordStrength');
+        const strengthBar = document.getElementById('strengthBar');
+        const registerBtn = document.getElementById('registerBtn');
+        const usernameInput = document.getElementById('username');
+
+        // Password strength requirements
+        const requirements = {
+            length: document.getElementById('length'),
+            uppercase: document.getElementById('uppercase'),
+            lowercase: document.getElementById('lowercase'),
+            number: document.getElementById('number')
+        };
+
+        function checkPasswordStrength(password) {
+            const checks = {
+                length: password.length >= 6,
+                uppercase: /[A-Z]/.test(password),
+                lowercase: /[a-z]/.test(password),
+                number: /\d/.test(password)
+            };
+
+            // Update visual indicators
+            Object.keys(checks).forEach(key => {
+                if (checks[key]) {
+                    requirements[key].classList.add('valid');
+                } else {
+                    requirements[key].classList.remove('valid');
+                }
+            });
+
+            // Calculate strength
+            const validCount = Object.values(checks).filter(Boolean).length;
+            let strengthClass = '';
+            
+            if (validCount === 1) strengthClass = 'strength-weak';
+            else if (validCount === 2) strengthClass = 'strength-fair';
+            else if (validCount === 3) strengthClass = 'strength-good';
+            else if (validCount === 4) strengthClass = 'strength-strong';
+
+            // Update strength bar
+            strengthBar.className = 'password-strength-bar ' + strengthClass;
+            
+            return validCount >= 3; // Require at least 3 criteria
+        }
+
+        function validateForm() {
+            const isPasswordValid = checkPasswordStrength(passwordInput.value);
+            const isUsernameValid = usernameInput.value.length >= 3;
+            
+            registerBtn.disabled = !(isPasswordValid && isUsernameValid);
+        }
+
+        passwordInput.addEventListener('input', function() {
+            if (this.value.length > 0) {
+                strengthIndicator.classList.add('visible');
+            } else {
+                strengthIndicator.classList.remove('visible');
+            }
+            validateForm();
+        });
+
+        usernameInput.addEventListener('input', validateForm);
+
+        // Form submission
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            if (registerBtn.disabled) {
+                e.preventDefault();
+                return;
+            }
+            
+            const btn = document.getElementById('registerBtn');
+            btn.classList.add('loading');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Création...';
+            btn.disabled = true;
+        });
+
+        // Create floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const size = Math.random() * 4 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDuration = (Math.random() * 6 + 4) + 's';
+            particle.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 10000);
+        }
+
+        // Create particles periodically
+        setInterval(createParticle, 700);
+
+        // Focus first input on load
+        window.addEventListener('load', function() {
+            document.getElementById('username').focus();
+        });
+
+        // Real-time username validation
+        usernameInput.addEventListener('input', function() {
+            const value = this.value;
+            if (value.length > 0 && value.length < 3) {
+                this.style.borderColor = '#e53e3e';
+            } else if (value.length >= 3) {
+                this.style.borderColor = '#38a169';
+            } else {
+                this.style.borderColor = '#e2e8f0';
+            }
+        });
+
+        // Auto-fill name field based on username
+        usernameInput.addEventListener('blur', function() {
+            const nameField = document.getElementById('name');
+            if (!nameField.value && this.value) {
+                // Capitalize first letter of username as suggestion
+                nameField.value = this.value.charAt(0).toUpperCase() + this.value.slice(1);
+            }
+        });
+    </script>
+</body>
+</html>
