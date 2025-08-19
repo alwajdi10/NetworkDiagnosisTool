@@ -4,15 +4,20 @@ NetDiagnostix  is a powerful and intuitive network diagnostic and troubleshootin
 # ✨ Features
 NetDiagnostix provides a comprehensive set of tools to give you deep insights into your network's health and performance:
 
-# 📍 Connectivity Analysis: Quickly verify the availability and responsiveness of devices (servers, printers, IoT devices) on your network using ICMP ping and custom TCP port checks.
+# 📍 Connectivity Analysis:
+Quickly verify the availability and responsiveness of devices (servers, printers, IoT devices) on your network using ICMP ping and custom TCP port checks.
 
-# 🚀 Performance Testing: Measure key performance metrics to identify bottlenecks.
+# 🚀 Performance Testing:
+Measure key performance metrics to identify bottlenecks.
 
-# Latency & Jitter: Determine the delay in communication for real-time applications like VoIP and gaming.
+# Latency & Jitter: 
+Determine the delay in communication for real-time applications like VoIP and gaming.
 
-# Bandwidth Estimation: Get an estimate of the available bandwidth between points.
+# Bandwidth Estimation:
+Get an estimate of the available bandwidth between points.
 
-# Response Time: Track the time it takes for a device to respond to a request.
+# Response Time:
+Track the time it takes for a device to respond to a request.
 
 🗺️ Network Mapping: Automatically discover devices on the local network and visualize the network topology, helping you understand how devices are interconnected.
 
